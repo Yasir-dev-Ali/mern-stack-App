@@ -5,13 +5,15 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp'; 
 import Home from './pages/Home';
 import About from './pages/About';
-// import Header from './Components/Header';
+import Header from './Components/Header';
+
 
 const App = () => {
   return (
     
+  
    <BrowserRouter>
-   {/* <Header/> */}
+    <Header />
     <Routes>
     
       <Route path="/" element={<Home />} />
