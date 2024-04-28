@@ -1,7 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
+const app = express();
+import userrouter from './route/user.route.js';
 import dotenv from 'dotenv';
 dotenv.config();   
+
 const connectDb=async()=>{
     try{
         await 'mongoose.connect(process.env.MONGO_URL)';
@@ -11,10 +14,11 @@ const connectDb=async()=>{
     }
 }
 connectDb();
+app.use("/api/user", userrouter);
 
 
 
-const app = express();
+
 
 
 
