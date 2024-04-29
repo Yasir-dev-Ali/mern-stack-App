@@ -4,7 +4,7 @@ import bcryptjs from "bcryptjs";
 export const sginUp = async (req,res)=>{
     console.log(req.body);
     const {name,email,password}=req.body;
-    const hashPassword= await bcryptjs.hashSync(password,12);
+    const hashPassword=  bcryptjs.hashSync(password,12);
     const  newUser=  User({name,email,password:hashPassword});
     try {
        await newUser.save(); 
