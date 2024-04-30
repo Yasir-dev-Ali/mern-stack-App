@@ -1,7 +1,8 @@
 import User from "../module/user.module.js";
 import bcryptjs from "bcryptjs";
+import { errorHandle } from "../utilte/error.js";
 
-export const sginUp = async (req,res)=>{
+export const sginUp = async (req,res,next)=>{
     console.log(req.body);
     const {name,email,password}=req.body;
     const hashPassword=  bcryptjs.hashSync(password,12);
@@ -12,7 +13,9 @@ export const sginUp = async (req,res)=>{
 
         
     } catch (error) {
-       res.status(500).json({message:"Something went wrong !"});
+      //  res.status(500).json({message:"Something went wrong !"});
+      next(errorHandle(500,"Something went wrong !"));
+
 
 
         

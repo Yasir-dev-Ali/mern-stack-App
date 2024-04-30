@@ -10,6 +10,17 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+app.use((err,req, res, next) => {
+   const statusCode = res.statusCode || 500;
+   const message = err.message || 'Internal Server Error';
+   return res.status(statusCode).json({
+       success:false,
+       message,
+       statusCode
+   });
+}
+);
+
 
 // Assuming the URI is stored in a variable called `dbURI`
 const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/user-auth';
