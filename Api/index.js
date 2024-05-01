@@ -38,8 +38,11 @@ db.once('open', function() {
 // Routes
 import userrouter from './route/user.route.js';
 import authrouter from './route/auth.route.js';
+// import sginInroutr from './route/sginIn.route.js';
 app.use("/api/user", userrouter);
 app.use("/api/auth", authrouter);
+
+// app.use("/api/sginIn", sginInroutr);
 
 
 // Start the server
