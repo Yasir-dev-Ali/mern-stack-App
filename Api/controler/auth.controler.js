@@ -44,8 +44,8 @@ export const sginIn = async (req, res, next) => {
     // Use a fallback mechanism for the secret key
     const secretKey = process.env.JWT_SECRET || 'fallback_secret_key';
     const token = jwt.sign({ id: valiUser._id }, secretKey);
-    const { password: pass, ...user } = valiUser._doc;
-    
+    const { password: pass, ...rest } = valiUser._doc;
+
     res.cookie("token", token, { httpOnly: true }).status(200).json({ message: "User Logged In Successfully!" });
   } catch (error) {
     next(error);
